@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Controls() {
+function Controls({changeDifficulty}) {
   return (
     <div>Controls</div>
   )

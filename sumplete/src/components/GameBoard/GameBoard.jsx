@@ -1,8 +1,10 @@
-import React from 'react'
+import {Cell} from '../Cell';
 
-function GameBoard() {
+function GameBoard({cellCount}) {
   return (
-    <div>GameBoard</div>
+    <div>
+        
+    </div>
   )
 }
 
