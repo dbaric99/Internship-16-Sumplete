@@ -1,9 +1,11 @@
 import {Cell} from '../Cell';
 
-function GameBoard({cellCount}) {
+function GameBoard({gameValues}) {
   return (
     <div>
-        
+        {
+            gameValues.map((num, index) => <Cell value={num} index={index}/>)
+        }
     </div>
   )
 }

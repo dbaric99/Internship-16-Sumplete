@@ -29,7 +29,9 @@ function Game() {
 
   return (
     <div>
-      {gameValues && <GameBoard cellCount={difficulty} />}
+        <h1>Sumplete</h1>
+        <h2>Delete numbers so each row/column adds up to the target number at the right/bottom.</h2>
+      {gameValues && <GameBoard gameValues={gameValues} />}
       <Controls changeDifficulty={(cells) => setDifficulty(cells)} />
     </div>
   );

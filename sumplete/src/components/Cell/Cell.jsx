@@ -1,8 +1,9 @@
 import React from 'react'
 
-function Cell() {
+function Cell({value, index}) {
+    console.log("CELL:",value, index);
   return (
-    <div>Cell</div>
+    <div>{value}</div>
   )
 }
 
