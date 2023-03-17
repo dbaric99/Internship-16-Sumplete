@@ -1,6 +1,7 @@
 
 
-function GameBoard({ gameValues }) {
+function GameBoard({ board, difficulty }) {
+  console.log("GAME BOARD: ", board, difficulty);
   return (
     <div>
       GameBoard
