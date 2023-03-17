@@ -8,8 +8,17 @@ function Game() {
   const [gameValues, setGameValues] = useState();
 
   useEffect(() => {
-    setGameValues(gameUtil.fillBoard(difficulty));
+    setGameValues(gameUtil.generateBoardValues(difficulty));
   }, [difficulty]);
+
+  useEffect(() => {
+    if(!gameValues) return;
+    const solutionArr = solutionUtil.generateSolution(gameValues);
+    console.log("SOLUTION: ", solutionArr);
+    const {rows, columns} = solutionUtil.splitBoard(solutionArr, difficulty);
+    console.log("ROWS:", rows);
+    console.log("COLUMNS:", columns);
+  }, [gameValues])
 
   return (
     <div>

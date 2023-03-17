@@ -1,1 +1,2 @@
-export * from './Cell';
+export * from './SumCell';
+export * from './ValueCell';

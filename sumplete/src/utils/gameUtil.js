@@ -1,4 +1,4 @@
-function fillBoard(difficulty) {
+function generateBoardValues(difficulty) {
     const maxValue = Math.ceil(difficulty / 2);
     const optionsArr = Array.from({ length: maxValue }, (_, i) => i + 1);
 
@@ -16,5 +16,5 @@ function fillBoard(difficulty) {
 }
   
 export const gameUtil = {
-    fillBoard,
+  generateBoardValues,
 };
