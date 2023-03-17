@@ -1,8 +1,9 @@
 import React from 'react'
 
-function ValueCell() {
+function ValueCell({cellObj}) {
+    console.log("VALUE CELL", cellObj)
   return (
-    <div>ValueCell</div>
+    <div>{cellObj.value}</div>
   )
 }
 

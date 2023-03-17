@@ -1,8 +1,9 @@
 import React from 'react'
 
-function SumCell() {
+function SumCell({sum}) {
+    console.log("SUM CELL:", sum)
   return (
-    <div>SumCell</div>
+    <div>{sum}</div>
   )
 }
 

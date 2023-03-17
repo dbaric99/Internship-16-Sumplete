@@ -10,15 +10,20 @@ function GameBoard({ board, difficulty }) {
   rows.forEach(row => rowSums.push(solutionUtil.generateSum(row)));
   columns.forEach(row => columnSums.push(solutionUtil.generateSum(row)));
 
-  console.log("BOARD: ", board);
-  console.log("ROWS: ", rows);
-  console.log("COLUMNS: ", columns);
-  console.log("SUMS ROW: ", rowSums);
-  console.log("SUMS COLUMN: ", columnSums);
-
   return (
     <div>
-      GameBoard
+      {board.map((cell, index) => {
+        if(!(index % len)) {
+          return <>
+            <ValueCell cellObj={cell}/>
+            <SumCell sum={rowSums[index/len]}/>
+          </>
+        }
+        return <ValueCell cellObj={cell}/>
+      })}
+      {columnSums.map(sum => 
+        <SumCell sum={sum} />
+      )}
     </div>
   );
 }
