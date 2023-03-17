@@ -1,5 +1,8 @@
+import { generalUtil } from "./generalUtil";
+
 function generateSum(line) {
-    return line.reduce((acc, curr) => acc + curr.value, 0);
+    return line.filter(obj => obj.solution)
+               .reduce((acc, curr) => acc + curr.value, 0);
 }
 
 function splitBoard(board, difficulty) {
@@ -26,8 +29,7 @@ function generateSolution(gameValues) {
     const board = [];
 
     gameValues.forEach(num => {
-        let randomBool = Math.random() < 0.5;
-        board.push({value: num, solution: randomBool})
+        board.push({value: num, solution: generalUtil.getRandomBool()})
     });
 
     return board;
