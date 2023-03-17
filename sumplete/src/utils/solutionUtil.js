@@ -1,5 +1,5 @@
 function generateSum(line) {
-
+    return line.reduce((acc, curr) => acc + curr.value, 0);
 }
 
 function splitBoard(board, difficulty) {
