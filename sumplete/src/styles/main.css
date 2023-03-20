@@ -120,6 +120,7 @@ h2 {
 
 .hanswer {
     color: #aba2a2;
+    border-left: 1px solid black;
 }
 
 .correct {

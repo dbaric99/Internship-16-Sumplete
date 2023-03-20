@@ -1,10 +1,11 @@
 import React from 'react'
 
-function ValueCell({cellObj, size}) {
+function ValueCell({cellObj, size, handleCellSelect}) {
 
   const handleCellClick = (e) => {
-    console.log('clicked');
-    e.target.classList.toggle('delete');
+    let cellArea = e.target;
+    cellArea.classList.toggle('delete');
+    handleCellSelect(cellObj.id);
   }
 
   return (

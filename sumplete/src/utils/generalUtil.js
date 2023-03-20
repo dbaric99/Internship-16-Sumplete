@@ -9,7 +9,6 @@ function getRandomBool() {
 }
 
 function getSize(difficulty) {
-    console.log("UTIL: ", difficulty, SIZE_CONSTANTS[difficulty])
     return SIZE_CONSTANTS[difficulty];
 }
   

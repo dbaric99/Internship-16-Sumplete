@@ -28,8 +28,8 @@ function splitBoard(board, difficulty) {
 function generateSolution(gameValues) {
     const board = [];
 
-    gameValues.forEach(num => {
-        board.push({value: num, solution: generalUtil.getRandomBool(), isClicked: false})
+    gameValues.forEach((num, index) => {
+        board.push({id: index, value: num, solution: generalUtil.getRandomBool(), isCrossed: false})
     });
 
     return board;
