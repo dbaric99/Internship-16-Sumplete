@@ -1,5 +1,5 @@
 import {ValueCell, SumCell} from '../Cell';
-import {solutionUtil} from '../../utils'
+import {generalUtil, solutionUtil} from '../../utils'
 
 function GameBoard({ board, difficulty }) {
   const len = Math.sqrt(difficulty);
@@ -13,16 +13,17 @@ function GameBoard({ board, difficulty }) {
   return (
     <div className='grid'>
       {board.map((cell, index) => {
-        if(!((index + 1) % len)) {                  
+        if(!((index + 1) % len)) {     
+          console.log(generalUtil.getSize(difficulty))        
           return <>
-            <ValueCell cellObj={cell} />
-            <SumCell sum={rowSums[Math.floor(index/len)]}/>
+            <ValueCell cellObj={cell} size={generalUtil.getSize(difficulty)} />
+            <SumCell sum={rowSums[Math.floor(index/len)]} size={generalUtil.getSize(difficulty)} />
           </>
         }
-        return <ValueCell cellObj={cell}/>
+        return <ValueCell cellObj={cell} size={generalUtil.getSize(difficulty)} />
       })}
       {columnSums.map(sum => 
-        <SumCell sum={sum} />
+        <SumCell sum={sum} size={generalUtil.getSize(difficulty)} />
       )}
     </div>
   );

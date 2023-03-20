@@ -40,8 +40,19 @@ h2 {
     justify-content: center;
     align-items: center;
     font-weight: 700;
+}
+
+.small {
     width: calc(25%);
-    height: calc(25%)
+    height: calc(25%);
+}
+.medium {
+    width: calc(20%);
+    width: calc(20%);
+}
+.big {
+    width: calc(16.6%);
+    width: calc(16.6%);
 }
 
 .number {

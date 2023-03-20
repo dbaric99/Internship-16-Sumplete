@@ -1,8 +1,9 @@
 import React from 'react'
 
-function SumCell({sum}) {
+function SumCell({sum, size}) {
+
   return (
-    <div className='cell hanswer'>{sum}</div>
+    <div className={`cell hanswer ${size}`}>{sum}</div>
   )
 }
 
