@@ -11,12 +11,12 @@ function GameBoard({ board, difficulty }) {
   columns.forEach(row => columnSums.push(solutionUtil.generateSum(row)));
 
   return (
-    <div>
+    <div className='grid'>
       {board.map((cell, index) => {
-        if(!(index % len)) {
+        if(!((index + 1) % len)) {                  
           return <>
-            <ValueCell cellObj={cell}/>
-            <SumCell sum={rowSums[index/len]}/>
+            <ValueCell cellObj={cell} />
+            <SumCell sum={rowSums[Math.floor(index/len)]}/>
           </>
         }
         return <ValueCell cellObj={cell}/>

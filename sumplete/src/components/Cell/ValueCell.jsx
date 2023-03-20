@@ -1,9 +1,8 @@
 import React from 'react'
 
 function ValueCell({cellObj}) {
-    console.log("VALUE CELL", cellObj)
   return (
-    <div>{cellObj.value}</div>
+    <div className='cell number'>{cellObj.value}</div>
   )
 }
 

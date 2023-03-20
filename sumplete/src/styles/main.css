@@ -31,6 +31,7 @@ h2 {
     width: 100%;
     user-select: none;
     margin-top: 20px;
+    height: 500px;
 }
 
 .cell {
@@ -39,6 +40,8 @@ h2 {
     justify-content: center;
     align-items: center;
     font-weight: 700;
+    width: calc(25%);
+    height: calc(25%)
 }
 
 .number {
@@ -106,7 +109,6 @@ h2 {
 
 .hanswer {
     color: #aba2a2;
-    border-left: 1px solid black;
 }
 
 .correct {

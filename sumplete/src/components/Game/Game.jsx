@@ -12,6 +12,8 @@ function Game() {
     setSolution(solutionUtil.generateSolution(gameValues));
   }, [difficulty]);
 
+  console.log("SOLUTION: ", solution);
+
   return (
     <div>
       <h1>Sumplete</h1>
