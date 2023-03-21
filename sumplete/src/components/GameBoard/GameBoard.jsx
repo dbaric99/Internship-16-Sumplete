@@ -53,14 +53,14 @@ function GameBoard({ board, difficulty, updateBoard, handleGameEnd }) {
         if(!((index + 1) % len)) {
           let sumIndex = Math.floor(index/len);
           return <>
-            <ValueCell cellObj={cell} size={generalUtil.getSize(difficulty)} handleCellSelect={findCellAndUpdate}/>
-            <SumCell sum={rowSums[sumIndex]} size={generalUtil.getSize(difficulty)} className='hanswer' solved={solvedRowsColumns.solvedRows[sumIndex]}/>
+            <ValueCell cellObj={cell} size={generalUtil.getSize(difficulty)} handleCellSelect={findCellAndUpdate} />
+            <SumCell sum={rowSums[sumIndex]} size={generalUtil.getSize(difficulty)} className='hanswer' solved={solvedRowsColumns.solvedRows[sumIndex]} key={`${index}-row-sum-cell`}/>
           </>
         }
-        return <ValueCell cellObj={cell} size={generalUtil.getSize(difficulty)} handleCellSelect={findCellAndUpdate} />
+        return <ValueCell cellObj={cell} size={generalUtil.getSize(difficulty)} handleCellSelect={findCellAndUpdate} key={`${index}-value-cell`}/>
       })}
       {columnSums.map((sum, index) => 
-        <SumCell sum={sum} size={generalUtil.getSize(difficulty)} className='vanswer' solved={solvedRowsColumns.solvedColumns[index]}/>
+        <SumCell sum={sum} size={generalUtil.getSize(difficulty)} className='vanswer' solved={solvedRowsColumns.solvedColumns[index]} key={`${index}-column-sum-cell`}/>
       )}
     </div>
   );

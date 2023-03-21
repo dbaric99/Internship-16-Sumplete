@@ -1,5 +1,3 @@
-import React from 'react'
-
 function SumCell({sum, size, className, solved}) {
 
   return (

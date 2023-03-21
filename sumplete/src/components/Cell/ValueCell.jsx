@@ -1,5 +1,3 @@
-import React from 'react'
-
 function ValueCell({cellObj, size, handleCellSelect}) {
 
   const handleCellClick = (e) => {

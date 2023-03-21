@@ -27,6 +27,7 @@ function Game() {
   const handleRestart = () => {
     setGameValues(gameUtil.generateBoardValues(difficulty));
     gameUtil.clearBoard();
+    setGameSolved(false);
   }
 
   useEffect(() => {
@@ -35,7 +36,6 @@ function Game() {
   }, [difficulty]);
 
   useEffect(() => {
-    console.log("BOARD CHANGED")
     setSolution(solutionUtil.generateSolution(gameValues));
   }, [gameValues])
 
