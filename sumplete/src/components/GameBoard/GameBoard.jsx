@@ -1,34 +1,58 @@
 import {ValueCell, SumCell} from '../Cell';
-import {generalUtil, solutionUtil} from '../../utils'
+import {gameUtil, generalUtil, solutionUtil} from '../../utils'
+import { useEffect, useState } from 'react';
 
 function GameBoard({ board, difficulty, updateBoard }) {
   const len = Math.sqrt(difficulty);
-  const { rows, columns } = solutionUtil.splitBoard(board, difficulty);
-  const rowSums = [];
-  const columnSums = [];
+  
+  const [rows, setRows] = useState(undefined);
+  const [columns, setColumns] = useState(undefined);
 
-  rows.forEach(row => rowSums.push(solutionUtil.generateSum(row)));
-  columns.forEach(row => columnSums.push(solutionUtil.generateSum(row)));
+  const [rowSums, setRowSums] = useState([]);
+  const [columnSums, setColumnSums] = useState([]);
+
+  const [solvedRowsColumns, setSolvedRowsColumns] = useState(undefined);
 
   const findCellAndUpdate = (cellId) => {
     let cell = board.find(cell => cell.id === cellId);
-    let clicked = !cell.isCrossed;
+    let clicked = !cell.isCounted;
     updateBoard(cellId, clicked);
   }
 
-  return (
+  useEffect(() => {
+    if(rows) {
+      let rowSums = [];
+      rows.forEach(row => rowSums.push(solutionUtil.generateSum(row)));
+      setRowSums(rowSums);
+    }
+    if(columns) {
+      let columnSums = [];
+      columns.forEach(row => columnSums.push(solutionUtil.generateSum(row)));
+      setColumnSums(columnSums);
+    }
+  }, [rows, columns]);
+
+  useEffect(() => {
+    let { rows, columns } = solutionUtil.splitBoard(board, difficulty);
+    setRows(rows);
+    setColumns(columns);
+    if(rows && columns && rowSums && columnSums) setSolvedRowsColumns(gameUtil.checkRowsColumns(rows, columns));
+  }, [board, difficulty])
+
+  return solvedRowsColumns && (
     <div className='grid'>
       {board.map((cell, index) => {
         if(!((index + 1) % len)) {
+          let sumIndex = Math.floor(index/len);
           return <>
             <ValueCell cellObj={cell} size={generalUtil.getSize(difficulty)} handleCellSelect={findCellAndUpdate}/>
-            <SumCell sum={rowSums[Math.floor(index/len)]} size={generalUtil.getSize(difficulty)} className='hanswer' />
+            <SumCell sum={rowSums[sumIndex]} size={generalUtil.getSize(difficulty)} className='hanswer' solved={solvedRowsColumns.solvedRows[sumIndex]}/>
           </>
         }
         return <ValueCell cellObj={cell} size={generalUtil.getSize(difficulty)} handleCellSelect={findCellAndUpdate} />
       })}
-      {columnSums.map(sum => 
-        <SumCell sum={sum} size={generalUtil.getSize(difficulty)} className='vanswer' />
+      {columnSums.map((sum, index) => 
+        <SumCell sum={sum} size={generalUtil.getSize(difficulty)} className='vanswer' solved={solvedRowsColumns.solvedColumns[index]}/>
       )}
     </div>
   );

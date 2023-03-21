@@ -10,7 +10,7 @@ function Game() {
   const clickedCellBoardUpdate = (cellId, clicked) => {
     let newSolution = solution.map(cell => {
       if(cell.id === cellId) {
-        cell.isCrossed = clicked;
+        cell.isCounted = clicked;
       }
       return cell;
     });
@@ -21,11 +21,6 @@ function Game() {
     let gameValues = gameUtil.generateBoardValues(difficulty);
     setSolution(solutionUtil.generateSolution(gameValues));
   }, [difficulty]);
-
-  useEffect(() => {
-    console.log("SOLUTION: ", solution);
-  }, [solution])
-
 
   return (
     <div>

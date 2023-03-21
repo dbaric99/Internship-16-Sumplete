@@ -29,7 +29,7 @@ function generateSolution(gameValues) {
     const board = [];
 
     gameValues.forEach((num, index) => {
-        board.push({id: index, value: num, solution: generalUtil.getRandomBool(), isCrossed: false})
+        board.push({id: index, value: num, solution: generalUtil.getRandomBool(), isCounted: true})
     });
 
     return board;

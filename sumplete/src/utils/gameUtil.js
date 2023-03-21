@@ -14,7 +14,25 @@ function generateBoardValues(difficulty) {
 
     return randomNumbers;
 }
+
+function checkRowsColumns(rows, columns) {
+    let solvedRows = [];
+    let solvedColumns = [];
+
+    rows.forEach((row, index) => {
+      let isSolved = row.every(obj => (obj.isCounted === obj.solution));
+      solvedRows.push(isSolved);
+    });
+
+    columns.forEach((col, index) => {
+      let isSolved = col.every(obj => (obj.isCounted === obj.solution));
+      solvedColumns.push(isSolved);
+    });
+
+    return {solvedRows, solvedColumns};
+}
   
 export const gameUtil = {
   generateBoardValues,
+  checkRowsColumns
 };
