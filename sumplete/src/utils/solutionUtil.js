@@ -26,6 +26,7 @@ function splitBoard(board, difficulty) {
 }
 
 function generateSolution(gameValues) {
+    console.log("GAME VALUES: ", gameValues);
     const board = [];
 
     gameValues.forEach((num, index) => {

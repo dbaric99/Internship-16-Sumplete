@@ -19,20 +19,27 @@ function checkRowsColumns(rows, columns) {
     let solvedRows = [];
     let solvedColumns = [];
 
-    rows.forEach((row, index) => {
+    rows.forEach(row => {
       let isSolved = row.every(obj => (obj.isCounted === obj.solution));
       solvedRows.push(isSolved);
     });
 
-    columns.forEach((col, index) => {
+    columns.forEach(col => {
       let isSolved = col.every(obj => (obj.isCounted === obj.solution));
       solvedColumns.push(isSolved);
     });
 
     return {solvedRows, solvedColumns};
 }
+
+function clearBoard() {
+    document.querySelectorAll('.cell').forEach(cell => {
+      cell.classList.remove('delete');
+    })
+}
   
 export const gameUtil = {
   generateBoardValues,
-  checkRowsColumns
+  checkRowsColumns,
+  clearBoard
 };

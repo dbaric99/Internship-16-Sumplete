@@ -2,7 +2,7 @@ import {ValueCell, SumCell} from '../Cell';
 import {gameUtil, generalUtil, solutionUtil} from '../../utils'
 import { useEffect, useState } from 'react';
 
-function GameBoard({ board, difficulty, updateBoard }) {
+function GameBoard({ board, difficulty, updateBoard, handleGameEnd }) {
   const len = Math.sqrt(difficulty);
   
   const [rows, setRows] = useState(undefined);
@@ -38,6 +38,14 @@ function GameBoard({ board, difficulty, updateBoard }) {
     setColumns(columns);
     if(rows && columns && rowSums && columnSums) setSolvedRowsColumns(gameUtil.checkRowsColumns(rows, columns));
   }, [board, difficulty])
+
+  useEffect(() => {
+    if(solvedRowsColumns) {
+      if(solvedRowsColumns.solvedRows.every(row => row) && solvedRowsColumns.solvedColumns.every(column => column)) {
+        handleGameEnd();
+      }
+    }
+  }, [solvedRowsColumns])
 
   return solvedRowsColumns && (
     <div className='grid'>
